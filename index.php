@@ -1,12 +1,11 @@
 <?php
-    echo 'hello world';
-    $host = 'localhost';
+$host = 'localhost';
 $user = 'root';
-$pasword = '';
+$password = '';
 $database = 'dbPhp';
 
 echo 'hello';
-$connection = mysqli_connect($host, $user, $pasword, $database);
+$connection = mysqli_connect($host, $user, $password, $database);
 if (isset($_POST['submit'])) {
     $realusername = $_POST['username'];
     $realpassword = $_POST['password'];
@@ -29,9 +28,9 @@ else {
 <body>
     <div class = 'parent' class = 'logForm'>
         <form action="/CRUD-Login/index.php" method = 'POST'>
-            <input type="text" name="username" id="">
-            <input type="password" name="password" id="">
-            <input type="submit" value="submit">
+            <input type="text" name="username">
+            <input type="password" name="password">
+            <input type="submit" value="submit" name = "submit">
         </form>
     </div>
 </body>

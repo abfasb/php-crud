@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $realusername = $_POST['username'];
     $realpassword = $_POST['password'];
     $queryUser = "INSERT INTO tblLogin VALUES ('$realusername', '$realpassword')";
-    $con = mysqli_query($connection, $queryUser);
+    $con = mysqli_query($queryUser, $connection);
     echo 'Nice job';
 }
 else {
