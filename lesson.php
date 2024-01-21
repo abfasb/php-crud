@@ -58,6 +58,7 @@ echo $name;
         while($result = mysqli_fetch_array($callQuery)) {
             echo '<tr>';
             echo '<td>'.$result['Id']. '<td/>';
+            echo '<td>'.$result['Id']. '<td/>';
             echo '<td>'.$result['Username']. '<td/>';
             echo '<td>'.$result['Password']. '<td/>';
             echo '</tr>';
