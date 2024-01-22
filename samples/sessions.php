@@ -12,5 +12,6 @@ $sessionss = isset($_SESSION['name']) ? $_SESSION['name'] : 'Guest';
 </head>
 <body>
     <h1><?php echo 'Hello ' . $sessionss; ?></h1>
+    <a href="./logout.php">Logout</a>
 </body>
 </html>
