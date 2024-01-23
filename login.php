@@ -1,4 +1,12 @@
 <?php
+    $host = 'localhost';
+    $user = 'root';
+    $password = '';
+    $database = 'dbPhp';
+    $connection = mysqli_connect($host, $user, $password, $database);
+    if (isset($_POST['submit'])) {
+    }
+
 
 ?>
 
@@ -23,6 +31,7 @@
         }
         form input[type= "text"], form input[type= "password"] {
             padding: 8px;
+            font-size: 16px;
         }
         form input[type= "text"] {
             margin-bottom: 18px;
@@ -63,18 +72,25 @@
             box-shadow: 10px 10px 66px -12px rgba(0,0,0,0.75);
             padding: 80px 50px;
         }
+        form label {
+            font-weight: bolder;
+        }
+        form label:hover {
+            color: green;
+            transtion: 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body>
     <div class = "parent">
         <div class = "child">
-            <form action="CRUD-Login/home.php">
+            <form action="/CRUD-Login/home.php" method = "POST">
             <label for="Username">Username</label>
-            <input type="text" name="text" id="">
+            <input type="text" name="username" id="">
             <label for="Password">Password</label>
             <input type="password" name="password" id="">
             <input type="submit" value="Submit" name = "submit">
-            <p>Don't have an account <a href=".//CRUD-Login/registration.php">Click here</a></p>
+            <p>Don't have an account <a href="./registration.php">Click here</a></p>
     </form>
         </div>
     </div>

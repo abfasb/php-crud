@@ -1,5 +1,4 @@
 <?php
-require('./index.php');
 $host = 'localhost';
 $user = 'root';
 $pasword = '';
