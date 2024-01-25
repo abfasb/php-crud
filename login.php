@@ -5,6 +5,8 @@
     $database = 'dbPhp';
     $connection = mysqli_connect($host, $user, $password, $database);
     if (isset($_POST['submit'])) {
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        
     }
 
 

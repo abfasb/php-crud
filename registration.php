@@ -11,6 +11,11 @@
         else if ($password != $confirmPassword) {
             echo 'Your password should match';
         }
+        else {
+            $queryUser = "INSERT INTO tblLogin (Username, Password) VALUES('$username','$password')";
+            $queried = mysqli_query($connection, $queryUser);
+            echo 'success!';
+        }
     }
 ?>
 
