@@ -4,6 +4,7 @@
     if(isset($_POST['submit'])) {
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
         $password = $_POST['password'];
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         $confirmPassword = $_POST['confirmpassword'];
         if(empty($username) || empty($password) || empty($confirmPassword)) {
             echo 'Enter something';
@@ -12,7 +13,7 @@
             echo 'Your password should match';
         }
         else {
-            $queryUser = "INSERT INTO tblLogin (Username, Password) VALUES('$username','$password')";
+            $queryUser = "INSERT INTO tblLogin (Username, Password) VALUES('$username','$hashedPassword')";
             $queried = mysqli_query($connection, $queryUser);
             echo 'success!';
         }
