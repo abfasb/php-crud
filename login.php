@@ -1,4 +1,5 @@
 <?php
+    require './samples/database.php';
     $host = 'localhost';
     $user = 'root';
     $password = '';
@@ -6,7 +7,16 @@
     $connection = mysqli_connect($host, $user, $password, $database);
     if (isset($_POST['submit'])) {
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = $_POST['password'];
         
+        $queryUser = "Select * FROM tblLogin WHERE Username = '$username'";
+        $queried = mysqli_query($connection, $queryUser);
+
+        /*if() {
+            $_SESSION['username'] = $username;
+
+        }
+        */
     }
 
 
