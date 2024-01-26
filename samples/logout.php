@@ -5,5 +5,5 @@
 
     session_destroy();
 
-    header('Location: /CRUD-Login/form.php')
+    header('Location: /CRUD-Login/login.php')
 ?>

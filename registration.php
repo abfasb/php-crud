@@ -109,7 +109,7 @@
             <label for="Confirm Password">Confirm Password</label>
             <input type="password" name="confirmpassword" id="">
             <input type="submit" value="Submit" name = "submit">
-            <p>Don't have an account <a href="./registration.php">Click here</a></p>
+            <p>Have have an account? <a href="./login.php">Click here</a></p>
     </form>
         </div>
     </div>

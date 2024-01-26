@@ -1,5 +1,6 @@
 <?php
     require './samples/database.php';
+    session_start();
     $host = 'localhost';
     $user = 'root';
     $password = '';
@@ -11,12 +12,20 @@
         
         $queryUser = "Select * FROM tblLogin WHERE Username = '$username'";
         $queried = mysqli_query($connection, $queryUser);
+        if($queried && mysqli_num_rows($queried) > 0) {
+            $result = mysqli_fetch_assoc($queried);
 
-        /*if() {
-            $_SESSION['username'] = $username;
-
+            if(password_verify($password, $result['Password'])) {
+                $_SESSION['Username'] = $username;
+                header("Location: /CRUD-Login/home.php");
+            }
+            else {
+                echo 'Wrong password';
+            }
         }
-        */
+        else {
+            echo 'Wrong Username, please try again later.';
+        }
     }
 
 
@@ -96,7 +105,7 @@
 <body>
     <div class = "parent">
         <div class = "child">
-            <form action="/CRUD-Login/home.php" method = "POST">
+            <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method = "POST">
             <label for="Username">Username</label>
             <input type="text" name="username" id="">
             <label for="Password">Password</label>
