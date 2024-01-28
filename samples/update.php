@@ -2,21 +2,36 @@
 
 $host = 'localhost';
 $user = 'root';
-$password = '';
+$password= '';
 $database = 'dbPhp';
 
 echo 'hello';
 $connection = mysqli_connect($host, $user, $password, $database);
-if(isset($_POST['submit'])) {
-    $updatedUser = $_POST['updatedUsername'];
-    $updatedPassword = $_POST['updatedPassword'];
-    $updatedId = $_POST['id'];
-    $query = "Update tblLogin Set Username = '$updatedUser' AND Password = '$updatedPassword' WHERE Id = '$updatedId' ";
-}
 
 if (!$connection) {
-   echo 'hello world';
-}
+    echo 'hello world';
+ }
+
+ if (isset($_GET['submit'])) {
+    $username = $_GET['updatedUsername'];
+    $passwordd = $_GET['updatedPassword'];
+    $hashedPassword = password_hash($passwordd, PASSWORD_DEFAULT);
+    if (!empty($username) && !empty($passwordd)) {
+        $currId = $_GET['id'];
+        $sql = "Update tblLogin Set Username = '$username', Password = '$hashedPassword' WHERE Id = '$currId'";
+        if(mysqli_query($connection, $sql)) {
+            echo 'Id: '. $currId. 'is Updated!';
+        }
+        else {
+            echo 'Error: ' .mysqli_error($connection);
+        }
+
+    }
+    else {
+        echo 'Please insert so that we can update as you request!';
+    }
+ }
+
 
 ?>
 
@@ -24,18 +39,17 @@ if (!$connection) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-'    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class = 'parent' >
-        <form action="/CRUD-Login/update.php" method = "POST">
-            <input type="text" name="updateUsername" placeholder = "Enter text">
-            <input type="password" name="updatePassword" placeholder = "Enter Password">
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+            <input type="text" name="updatedUsername" placeholder = "Enter Updated Username">
+            <input type="password" name="updatedPassword" placeholder = "Enter Updated Password">
+            <input type="hidden" name="id" value = "<?php  echo $_GET['id']; ?>" placeholder = "Enter Updated Password">
             <input type="submit" value="submit" name = "submit">
-            <input type="submit" value="id" name = "id">
-            <a href="/CRUD-Login/index.php">Go back home.</a>
         </form>
     </div>
 </body>
