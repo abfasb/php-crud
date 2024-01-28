@@ -17,7 +17,7 @@
 
             if(password_verify($password, $result['Password'])) {
                 $_SESSION['Username'] = $username;
-                header("Location: /CRUD-Login/home.php");
+                header("Location: /CRUD-Login/homee.php");
             }
             else {
                 echo 'Wrong password';

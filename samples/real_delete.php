@@ -11,7 +11,9 @@
 
             $sql = "DELETE FROM tblLogin WHERE Id = '$idToDelete'";
             if (mysqli_query($connection, $sql)) {
-                echo 'Message deleted';
+                sleep(1);
+                header("Location: /CRUD-Login/homee.php");
+                echo '<script> alert("Deleted Successfully!"); </script>;';
             }
             else {
                 echo 'Error you dipshit';
@@ -20,6 +22,5 @@
     }else {
         echo 'Error you dipshit';
     }
-    echo 'Error you dipshit';
 
 ?>

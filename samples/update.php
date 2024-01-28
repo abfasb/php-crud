@@ -21,6 +21,8 @@ if (!$connection) {
         $sql = "Update tblLogin Set Username = '$username', Password = '$hashedPassword' WHERE Id = '$currId'";
         if(mysqli_query($connection, $sql)) {
             echo 'Id: '. $currId. 'is Updated!';
+            sleep(3);
+            header("Location: /CRUD-Login/homee.php");
         }
         else {
             echo 'Error: ' .mysqli_error($connection);
