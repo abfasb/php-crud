@@ -14,10 +14,17 @@
     <h1>hello world</h1>
     <button id="btn-parent">Click here</button>
 </body>
-<script>
+<script defer>
     let btn = document.getElementById('btn-parent');
+    let text = document.querySelector('h1');
     btn.addEventListener('click', () => {
-        alert("hello, fuck you!");
+        if (text.innerText == 'hello') {
+        text.innerText = '';
+        }
+        else {
+            text.innerText = 'hello';
+        }
     })
+    
 </script>
 </html>
